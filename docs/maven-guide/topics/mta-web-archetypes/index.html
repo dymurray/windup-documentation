@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Windup Documentation | Windup Documentation</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Windup Documentation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Windup Documentation" />
+<meta property="og:description" content="Windup Documentation" />
+<link rel="canonical" href="https://windup.github.io/windup-documentation/docs/maven-guide/topics/mta-web-archetypes/" />
+<meta property="og:url" content="https://windup.github.io/windup-documentation/docs/maven-guide/topics/mta-web-archetypes/" />
+<meta property="og:site_name" content="Windup Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Windup Documentation" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Windup Documentation","headline":"Windup Documentation","url":"https://windup.github.io/windup-documentation/docs/maven-guide/topics/mta-web-archetypes/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        <h1>Windup Documentation</h1>
+      
+        <p><a href="https://github.com/windup/windup-documentation">View on GitHub</a></p>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="mta-archetypes_{context}">Working with Archetypes</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>{ProductFullName} includes <strong>archetypes</strong> that group applications that are assessed for migration, according to common characteristics. These application groups, or <strong>archetypes</strong>, enable {ProductShortName} to apply questionnaires populated with questions that apply to common application characteristics.</p>
+</div>
+<div class="paragraph">
+<p>Application <strong>archetypes</strong> are defined by criteria tags and the application taxonomy. Each archetype selects the how the <em>assessment module</em> assesses the applications according to the charecteristics defined in that archetype. If the tags of an application match the criteria tags of an archetype, then the application is associated with the archetype.</p>
+</div>
+<div class="paragraph">
+<p>Creation of an archetype is defined by a series of <strong>tags</strong>, <strong>stakeholders</strong>, and <strong>stakeholder groups</strong>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Criteria tags</strong> are tags that the archetype requires to include an application as a member.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="title">Criteria tags do not partially match an application</div>
+<div class="paragraph">
+<p>For example, if application <em>a</em> only has tag <em>a</em>, but the archetype <em>a</em> criteria tags include tag <em>a</em> AND tag <em>b</em>, then application <em>a</em> will not be a member of archetype <em>a</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>Archetype tags</strong> are tags that are applied to the group of applications that is known as an archetype. They are applied to the archetype entity.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mta-define-archetype_{context}">Defining an archetype</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the {ProductShortName} web console.</p>
+</li>
+<li>
+<p>In the left menu, click <strong>Archetypes</strong> and then click <strong>Create new archetype</strong>.</p>
+</li>
+<li>
+<p>In the form that opens, enter the following information for the new archetype:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><strong>Name</strong>: Name of the new archetype. (mandatory)</p>
+</li>
+<li>
+<p><strong>Description</strong>: Description of the new archetype. (optional)</p>
+</li>
+<li>
+<p><strong>Criteria Tags</strong>: Tags that associate the assessed applications with the archetype. (mandatory). If criteria tags are updated, the process to calculate the applications, with which the archetype is associated with, is triggered again.</p>
+</li>
+<li>
+<p><strong>Archetype Tags</strong>: That the archetype assesses in the application. (mandatory)</p>
+</li>
+<li>
+<p><strong>Stakeholder(s)</strong>: Specific stakeholders involved in the application development and migration. (optional)</p>
+</li>
+<li>
+<p><strong>Stakeholders Group(s)</strong>: Groups of stakeholders involved in the application development and migration. (optional)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click <strong>Create</strong>. The new archetype appears in the list.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>After you create an archetype, every application in the inventory whose tags match those of the archetype is automatically associated to that archetype.</p>
+</div>
+<div class="sect2">
+<h3 id="mta-inheritance-archetype_{context}">Archetype inheritance</h3>
+<div class="paragraph">
+<p>Inheritance is the default, meaning that all the associated applications inherit <em>assessment</em> and <em>review</em> from the archetype groups to which they belong. However, inheritance can be overridden. Inherited <em>assessment</em> and <em>review</em> is overridden for an application by completing an individual assessment and review.</p>
+</div>
+<div class="sect3">
+<h4 id="mta-assessment-archetype_{context}">Archetype assessment</h4>
+<div class="paragraph">
+<p>An archetype is considered to have been <em>assessed</em> when all required questionnaires have been answered.</p>
+</div>
+<div class="paragraph">
+<p>An archetype is considered reviewed when it has been reviewed once, even though multiple questionnaires have been marked as required.</p>
+</div>
+<div class="paragraph">
+<p>If an application is associated with archetypes, the application is considered assessed when all associated archetypes have been assessed.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mta-deleting-archetype_{context}">Deleting an archetype</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Deleting an archetype deletes any associated assessment. All associated applications move to an <strong>Unassessed</strong> state.</p>
+</div>
+</div>
+</div>
+
+      <footer class="site-footer">
+        <span class="site-footer-renderer"><p align="center"><a href="https://www.netlify.com"><img src="https://www.netlify.com/img/global/badges/netlify-light.svg"></a></p></span>
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/windup/windup-documentation">windup-documentation</a> is maintained by <a href="https://github.com/windup">windup</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>

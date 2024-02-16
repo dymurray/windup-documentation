@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Windup Documentation | Windup Documentation</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Windup Documentation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Windup Documentation" />
+<meta property="og:description" content="Windup Documentation" />
+<link rel="canonical" href="https://windup.github.io/windup-documentation/docs/eclipse-code-ready-studio-guide-mtr/topics/mta-web-tagging-an-application/" />
+<meta property="og:url" content="https://windup.github.io/windup-documentation/docs/eclipse-code-ready-studio-guide-mtr/topics/mta-web-tagging-an-application/" />
+<meta property="og:site_name" content="Windup Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Windup Documentation" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Windup Documentation","headline":"Windup Documentation","url":"https://windup.github.io/windup-documentation/docs/eclipse-code-ready-studio-guide-mtr/topics/mta-web-tagging-an-application/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        <h1>Windup Documentation</h1>
+      
+        <p><a href="https://github.com/windup/windup-documentation">View on GitHub</a></p>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="mta-web-tagging-an-application_{context}">Tagging an application</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can attach various tags to the application that you are going to analyze. The tags allow classifying applications in multiple dimensions.</p>
+</div>
+<div class="paragraph">
+<p>Tagging can be either automatic or manual.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="manual-tagging-of-an-application_{context}">Manual tagging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can tag an application manually, both before or after you run an analysis.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In <strong>Migration</strong> view, click <strong>Application inventory</strong>.</p>
+</li>
+<li>
+<p>Click the <strong>Analysis</strong> tab.</p>
+</li>
+<li>
+<p>In the row of the required application, click the pen icon.</p>
+</li>
+<li>
+<p>The <strong>Update application</strong> window opens.</p>
+</li>
+<li>
+<p>Select the desired tags from the <strong>Select a tag(s)</strong> drop-down list.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="automating-tagging-of-an-application_{context}">Automatic tagging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>{ProductShortName} translates the technology stack information that the analysis module collects into tags and automatically adds the tags to the application. Automatic tagging is especially useful when dealing with large portfolios of applications.</p>
+</div>
+<div class="paragraph">
+<p>Automatic tagging of applications is enabled by default. You can disable it by unselecting the <strong>Enable automated tagging</strong> checkbox in the <strong>Advanced</strong> section of the <strong>Analysis configuration</strong> wizard.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To tag an application automatically, make sure that the <strong>Enable automated tagging</strong> checkbox is selected <em>before</em> you run an analysis of the application.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="viewing-tags-of-an-application_{context}">Viewing the tags of an application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can view the tags attached to a particular application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can view the tags that were attached automatically only <em>after</em> you have run an analysis of the application.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In <strong>Migration</strong> view, click <strong>Application inventory</strong>.</p>
+</li>
+<li>
+<p>Click the <strong>Analysis</strong> tab.</p>
+</li>
+<li>
+<p>Click the name of the required application.</p>
+</li>
+<li>
+<p>A side drawer opens. In the side drawer, click the <strong>Tags</strong> tab.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You can see the tags attached to the application.</p>
+</div>
+<div class="paragraph">
+<p>The tags can be filtered by source and tag category. The sources are <strong>Analysis</strong> and <strong>Manual</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The categories are displayed in a drop-down list, for example, <strong>HTTP</strong>, <strong>MVC</strong>, <strong>Web</strong>, <strong>Observability</strong>, <strong>Persistence</strong>, <strong>Application Type</strong>, <strong>Data Center</strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-tags_{context}">Creating tags</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can create custom tags for applications that {ProductShortName} assesses or analyzes.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In <strong>Migration</strong> view, click <strong>Controls</strong>.</p>
+</li>
+<li>
+<p>Click the <strong>Tags</strong> tab.</p>
+</li>
+<li>
+<p>Click <strong>Create tag</strong>, which opens a dialog.</p>
+</li>
+<li>
+<p>In the <strong>Name</strong> field enter a unique name for the tag.</p>
+</li>
+<li>
+<p>Click the <strong>Tag category</strong> field and select the category tag to associate with the tag.</p>
+</li>
+<li>
+<p>Click <strong>Create</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="editing-tags_{context}">Editing tags</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can edit defined tags.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In <strong>Migration</strong> view, click <strong>Controls</strong>.</p>
+</li>
+<li>
+<p>Click the <strong>Tags</strong> tab. A list of tag categories appears in the main pane.</p>
+</li>
+<li>
+<p>Click the arrow to the left of the category name, opening a list of tags in the category.</p>
+</li>
+<li>
+<p>Select <strong>Edit</strong> from the drop-down menu, opening a dialog.</p>
+</li>
+<li>
+<p>Edit the tag&#8217;s name in the <strong>Name</strong> field.</p>
+</li>
+<li>
+<p>Click the <strong>Tag category</strong> field and and select the category tag to associate with the tag.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="editing-tag-categories_{context}">Editing tag categories</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can edit defined tag categories.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In <strong>Migration</strong> view, click <strong>Controls</strong>.</p>
+</li>
+<li>
+<p>Click the <strong>Tags</strong> tab.</p>
+</li>
+<li>
+<p>Select a defined tag category and click <strong>Edit</strong> to the right of the tag category.</p>
+</li>
+<li>
+<p>Edit the tag category&#8217;s name in the <strong>Name</strong> field.</p>
+</li>
+<li>
+<p>Edit the category&#8217;s <strong>Rank</strong> value.</p>
+</li>
+<li>
+<p>Click the <strong>Color</strong> field and select a color for the tag category.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+      <footer class="site-footer">
+        <span class="site-footer-renderer"><p align="center"><a href="https://www.netlify.com"><img src="https://www.netlify.com/img/global/badges/netlify-light.svg"></a></p></span>
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/windup/windup-documentation">windup-documentation</a> is maintained by <a href="https://github.com/windup">windup</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+
+    
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Windup Documentation | Windup Documentation</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Windup Documentation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Windup Documentation" />
+<meta property="og:description" content="Windup Documentation" />
+<link rel="canonical" href="https://windup.github.io/windup-documentation/docs/eclipse-code-ready-studio-guide-mtr/topics/mta-custom-questionnaire/" />
+<meta property="og:url" content="https://windup.github.io/windup-documentation/docs/eclipse-code-ready-studio-guide-mtr/topics/mta-custom-questionnaire/" />
+<meta property="og:site_name" content="Windup Documentation" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Windup Documentation" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Windup Documentation","headline":"Windup Documentation","url":"https://windup.github.io/windup-documentation/docs/eclipse-code-ready-studio-guide-mtr/topics/mta-custom-questionnaire/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+  </head>
+  <body>
+    <header class="page-header">
+        <h1>Windup Documentation</h1>
+      
+        <p><a href="https://github.com/windup/windup-documentation">View on GitHub</a></p>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="mta-custom-questionnaire_{context}">Custom questionnaire</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>{ProductFullName} allows you to import custom questionnaires using a custom YAML syntax for questionnaire definition.</p>
+</div>
+<div class="paragraph">
+<p>The syntax supports:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Conditional questions</p>
+</li>
+<li>
+<p>Automated answers based on tags present on the assessed application or archetype</p>
+</li>
+<li>
+<p>Autotagging of applications based on answers</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mta-assessment-questionnaire-fields_{context}">Questionnaire fields</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code>: Name of the questionnaire. <code>name</code> is required and must be unique for the entire {ProductShortName} instance.</p>
+</li>
+<li>
+<p><code>description</code>: An optional short description of the questionnaire.</p>
+</li>
+<li>
+<p><code>thresholds</code>: Required the threshold definition for each risk category for the application or the archetype to be considered affected by that risk level. The higher risk level always takes precedence. For example, if yellow threshold is established in 30% and red in 5%, and the answers for an application or archetype to have 35% yellow and 6% red, the risk level for the application or archetype will be red.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>red</code>: Required numeric percentage (example: <code>30</code> for <code>30%</code>) of red answers the questionnaire can have until the risk level is considered red.</p>
+</li>
+<li>
+<p><code>yellow</code>: Required numeric percentage (example: <code>30</code> for <code>30%</code>) of yellow answers the questionnaire can have until the risk level is considered
+yellow.</p>
+</li>
+<li>
+<p><code>unknown</code>: Required numeric percentage (example: <code>30</code> for <code>30%</code>) of unknown answers the questionnaire can have until the risk level is considered
+unknown.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>riskMessages</code>: Required messages to be displayed in reports for each risk category. The <em>risk_messages</em> map is defined by the following fields:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>red</code>: Required string message to display in reports for the red risk level.</p>
+</li>
+<li>
+<p><code>yellow</code>: Required string message to display in reports for the yellow risk level.</p>
+</li>
+<li>
+<p><code>green</code>: Required string message to display in reports for the green risk level.</p>
+</li>
+<li>
+<p><code>unknown</code>: Required string message to display in reports for the unknown risk level.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>sections</code>: Required list of sections that the questionnaire will include.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code>: Name is the required string to be displayed for the section.</p>
+</li>
+<li>
+<p><code>order</code>: Required int order in which the question should appear in the section.</p>
+</li>
+<li>
+<p><code>comment</code>: Optional string to describe the section.</p>
+</li>
+<li>
+<p><code>questions</code>: Required list of questions that belong to the section.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>order</code>: Required int order in which the question should appear in the section.</p>
+</li>
+<li>
+<p><code>text</code>: Required string of the question to be asked.</p>
+</li>
+<li>
+<p><code>explanation</code>: Optional string of additional explanations for the question.</p>
+</li>
+<li>
+<p><code>includeFor</code>: Optional list that defines a question should be displayed if any of the tags included in the list is present in the target application or archetype.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>category</code>: Required string category of the target tag.</p>
+</li>
+<li>
+<p><code>tag</code>: Required string for the target tag.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>excludeFor</code>: Optional list defines that a question should be skipped if any of the tags included in the list is present in the target application or archetype.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>category</code>: Required string category of the target tag.</p>
+</li>
+<li>
+<p><code>tag</code>: Required string for the target tag.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>answers</code>: Required list of answers for the given question.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>order</code>: Required int order in which the question should appear in the section.</p>
+</li>
+<li>
+<p><code>text</code>: Required string the actual answer for the question.</p>
+</li>
+<li>
+<p><code>risk</code>: Required to be one of red, yellow, green, or unknown. The risk level of the current answer implied.</p>
+</li>
+<li>
+<p><code>rationale</code>: Optional string explaining the justification for the answer being considered a risk.</p>
+</li>
+<li>
+<p><code>mitigation</code>: Optional string for an explanation of the potential mitigation strategy for the risk implied by this answer.</p>
+</li>
+<li>
+<p><code>applyTags</code>: Optional list that defines a list of tags to be automatically applied to the assessed application or archetype if this answer is selected.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>category</code>: Required string category of the target tag.</p>
+</li>
+<li>
+<p><code>tag</code>: Required string for the target tag.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>autoAnswerFor</code>: Optional list defines a list of tags that will lead to this answer being automatically selected when the application or archetype is assessed.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>category</code>: Required string category of the target tag.</p>
+</li>
+<li>
+<p><code>tag</code>: Required string for the target tag.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Anything marked as <strong>required</strong> is mandatory and must be completed. Otherwise, the
+YAML will not validate on upload.</p>
+</li>
+<li>
+<p>Each subsection defines a new struct/object in YAML. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">...
+name: Testing
+thresholds:
+    red: 30
+    yellow: 45
+    unknown: 5
+...</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mta-custom-questionnaire-yaml-template_{context}">YAML template</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A YAML template is provided to guide you through building your custom questionnaire.</p>
+</div>
+<div class="paragraph">
+<p>The template is available for download by clicking <strong>Download YAML template</strong> on the <strong>Assessment questionnaires</strong> page.</p>
+</div>
+<details>
+<summary class="title">To view the YAML template, click (here).</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">name: Uploadable Cloud Readiness Questionnaire Template
+description: This questionnaire is an example template for assessing cloud readiness. It serves as a guide for users to create and customize their own questionnaire templates.
+required: true
+sections:
+  - order: 1
+    name: Application Technologies
+    questions:
+      - order: 1
+        text: What is the main technology in your application?
+        explanation: Identify the main framework or technology used in your application.
+        includeFor:
+          - category: Language
+            tag: Java
+        answers:
+          - order: 1
+            text: Quarkus
+            risk: green
+            rationale: Quarkus is a modern, container-friendly framework.
+            mitigation: No mitigation needed.
+            applyTags:
+              - category: Runtime
+                tag: Quarkus
+            autoAnswerFor:
+              - category: Runtime
+                tag: Quarkus
+          - order: 2
+            text: Spring Boot
+            risk: green
+            rationale: Spring Boot is versatile and widely used.
+            mitigation: Ensure container compatibility.
+            applyTags:
+              - category: Runtime
+                tag: Spring Boot
+            autoAnswerFor:
+              - category: Runtime
+                tag: Spring Boot
+          - order: 3
+            text: Legacy Monolithic Application
+            risk: red
+            rationale: Legacy monoliths are challenging for cloud adaptation.
+            mitigation: Consider refactoring into microservices.
+      - order: 2
+        text: Does your application use a microservices architecture?
+        explanation: Assess if the application is built using a microservices architecture.
+        answers:
+          - order: 1
+            text: Yes
+            risk: green
+            rationale: Microservices are well-suited for cloud environments.
+            mitigation: Continue monitoring service dependencies.
+          - order: 2
+            text: No
+            risk: yellow
+            rationale: Non-microservices architectures may face scalability issues.
+            mitigation: Assess the feasibility of transitioning to microservices.
+          - order: 3
+            text: Unknown
+            risk: unknown
+            rationale: Lack of clarity on architecture can lead to unplanned issues.
+            mitigation: Conduct an architectural review.
+
+      - order: 3
+        text: Is your application's data storage cloud-optimized?
+        explanation: Evaluate if the data storage solution is optimized for cloud usage.
+        includeFor:
+          - category: Language
+            tag: Java
+        answers:
+          - order: 1
+            text: Cloud-Native Storage Solution
+            risk: green
+            rationale: Cloud-native solutions offer scalability and resilience.
+            mitigation: Ensure regular backups and disaster recovery plans.
+          - order: 2
+            text: Traditional On-Premises Storage
+            risk: red
+            rationale: Traditional storage might not scale well in the cloud.
+            mitigation: Explore cloud-based storage solutions.
+          - order: 3
+            text: Hybrid Storage Approach
+            risk: yellow
+            rationale: Hybrid solutions may have integration complexities.
+            mitigation: Evaluate and optimize cloud integration points.
+thresholds:
+  red: 1
+  yellow: 30
+  unknown: 15
+riskMessages:
+  red: Requires deep changes in architecture or lifecycle
+  yellow: Cloud friendly but needs minor changes
+  green: Cloud Native
+  unknown: More information needed</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mta-conditional-questionnaire_{context}">Conditional questions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The syntax supports excluding or including questions based on tags existing on the application or archetype. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">...
+  questions:
+    - order: 1
+      text: What is the main JAVA framework used in your application?
+      explanation: Identify the primary JAVA framework used in your application.
+      includeFor:
+        - category: Language
+          tag: Java
+...</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mta-automated-answers_{context}">Automated answers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Automated answers mean that answers are automatically selected when the application or archetype is assessed.</p>
+</div>
+<div class="paragraph">
+<p>In the following example, if an application or archetype is tagged <code>Runtime/Quarkus</code>, then the <code>Quarkus</code> answer is automatically selected. While if an application or archetype is tagged <code>Runtime/Spring Boot</code>, then the 'Spring Boot' answer choice is automatically selected.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">...
+  text: What is the main technology in your application?
+    explanation: Identify the main framework or technology used in your application.
+      answers:
+        - order: 1
+          text: Quarkus
+          risk: green
+          autoAnswerFor:
+            - category: Runtime
+              tag: Quarkus
+        - order: 2
+          text: Spring Boot
+          risk: green
+          autoAnswerFor:
+            - category: Runtime
+              tag: Spring Boot
+...</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mta-autotagging-answers_{context}">Autotagging of applications based on answers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Autotagging of applications based on answers means that tags are automatically applied to the assessed application or archetype, if this answer is selected.</p>
+</div>
+<div class="paragraph">
+<p>The tags are transitive.</p>
+</div>
+<div class="paragraph">
+<p>Each tag is defined by the following two required elements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>category</strong>: Category of the target tag (<code>String</code>).</p>
+</li>
+<li>
+<p><strong>tag</strong>: Definition for the target tag as (<code>String</code>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the following example, if the answer selected is <code>Quarkus</code>, then the <code>Runtime/Quarkus</code> tag is applied to the assessed application or archetype. While if the answer selected is <code>Spring Boot</code>, then the <code>Runtime/Spring Boot</code> tag is applied to the assessed application or archetype.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">...
+questions:
+  - order: 1
+    text: What is the main technology in your application?
+    explanation: Identify the main framework or technology used in your application.
+    answers:
+      - order: 1
+        text: Quarkus
+        risk: green
+        applyTags:
+          - category: Runtime
+            tag: Quarkus
+      - order: 2
+        text: Spring Boot
+        risk: green
+        applyTags:
+          - category: Runtime
+            tag: Spring Boot
+...</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+      <footer class="site-footer">
+        <span class="site-footer-renderer"><p align="center"><a href="https://www.netlify.com"><img src="https://www.netlify.com/img/global/badges/netlify-light.svg"></a></p></span>
+        
+          <span class="site-footer-owner"><p align="center"><a href="https://github.com/windup/windup-documentation">windup-documentation</a> is maintained by <a href="https://github.com/windup">windup</a>.</p></span>
+        
+      </footer>
+    </main>
+  </body>
+</html>
